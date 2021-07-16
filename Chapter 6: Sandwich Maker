@@ -1,0 +1,26 @@
+#! python
+''' SandwichMaker.py- 
+1. set prices for each options
+2. asks users for their sandwich preferences
+3. total cost once done '''
+
+import pyinputplus as pyip
+
+bread_price = {'wheat':2, 'white':1, 'sourdough':1.3}
+protein_price = {'chicken':3, 'turkey':4, 'ham':1, 'tofu':2}
+
+print('Bread Type: wheat: $2 , white: $1 , sourdough: $1.3')
+bread_type = pyip.inputMenu(['wheat', 'white', 'sourdough'], lettered=True)
+
+print('Protein Type: chicken: $3 , turkey: $4 , ham: $1 , tofu: $2')
+protein_type = pyip.inputMenu(['chicken','turkey','ham','tofu'], lettered=True)
+
+cheese = pyip.inputYesNo('Do you want some cheese(Free)?\n')
+if cheese == 'yes':
+    cheese_type = pyip.inputMenu(['cheddar', 'Swiss','mozzarella'], lettered=True)
+Extra = pyip.inputYesNo('Do you want mayo, mustard, lettuce, or tomato?(Free)\n')
+
+quantity = pyip.inputInt('How many sandwiches do you want.\n', min = 1)
+total_cost = (bread_price[bread_type] + protein_price[protein_type]) * quantity
+
+print('Thank you, Total Cost:$',total_cost)
