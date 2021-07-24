@@ -1,0 +1,33 @@
+#! python3
+# madLibs.py - find words in the text files and replace them with the user inputs
+
+import re
+import pyinputplus as pyip
+
+# TODO: create a text file with open() and write()
+file_object = open('incomplete_sentence.txt' , 'w')
+file_object.write('The ADJECTIVE panda walked to the NOUN and then VERB. \
+A nearby NOUN was unaffected by these events.')
+file_object.close()
+
+file_object = open('incomplete_sentence.txt')
+text = file_object.read()
+file_object.close()
+
+# TODO: create regex 
+regex = re.compile(r'ADJECTIVE|NOUN|ADVERB|VERB')
+
+# TODO: For each match, prompt user for input and update string 
+while regex.search(text) is not None:
+    word = pyip.inputStr(f'Enter a(n) {regex.search(text).group().lower()}:')
+    text = regex.sub(word, text, 1)
+   
+print(text)
+finish = open('complete_sentence.txt', 'w')
+finish.write('text')
+finish.close()
+print('This text is saved at complete_sentence.txt')
+
+
+
+
